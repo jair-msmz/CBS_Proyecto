@@ -13,7 +13,7 @@ jwt = JWTManager(app)
 
 # Configuración de Conexión a SQL Server (Cadena Ficticia)
 # Asegúrate de que el driver 'ODBC Driver 17 for SQL Server' esté instalado.
-SERVER_NAME = 'WIN-LIG7IOI1Q50\\SQLEXPRESS'  # Ej: WIN-SERVER2019\SQLEXPRESS
+SERVER_NAME = 'WIN-IG5U6V6SUTN\SQLEXPRESS02'  # Ej: WIN-SERVER2019\SQLEXPRESS
 DATABASE_NAME = 'HistoriasMedicas'
 
 # Cadena de Conexión ODBC con Autenticación de Windows
