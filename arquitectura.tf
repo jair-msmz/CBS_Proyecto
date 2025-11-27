@@ -14,7 +14,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = "${var.region}"
 }
 
 ############################################
@@ -22,7 +22,8 @@ provider "aws" {
 ############################################
 
 resource "aws_s3_bucket" "secure_bucket" {
-  bucket = "clinicasecurebucket1"
+  bucket = "${var.bucket_name}"
+  acl    = "${var.acl}"
 
   tags = {
     Name        = "Clinica Secure Data"
@@ -67,7 +68,7 @@ resource "aws_s3_bucket_public_access_block" "secure_bucket_public_block" {
 ############################################
 
 resource "aws_s3_bucket" "secure_bucket_logs" {
-  bucket = "clinicasecurebucket1-logs"
+  bucket = "${var.log_bucket_name}"
 
   tags = {
     Name        = "Clinica Secure Logs"
@@ -108,7 +109,7 @@ resource "aws_iam_role" "clinica_secure_role" {
         Effect = "Allow"
         Principal = {
           # Cuenta desde la que los usuarios asumirán el rol
-          AWS = "arn:aws:iam::498823212740:root"
+          AWS = "arn:aws:iam::${var.account}:root"
         }
         Action = "sts:AssumeRole"
       }
